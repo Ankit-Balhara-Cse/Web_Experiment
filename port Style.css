@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: #0F172A;
+  color: #E5E7EB;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #0F172A, #1E293B);
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #38BDF8;
+}
+
+header h2 {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  color: #CBD5E1;
+}
+
+header p {
+  max-width: 700px;
+  margin: 20px auto;
+  color: #94A3B8;
+}
+
+header button {
+  background: #38BDF8;
+  color: #0F172A;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+header button:hover {
+  background: #0ea5e9;
+}
+
+nav {
+  background: #020617;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 15px;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #E5E7EB;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #38BDF8;
+}
+
+section {
+  padding: 70px 15%;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #38BDF8;
+  font-size: 2rem;
+}
+
+#about ul {
+  margin-top: 20px;
+}
+
+#about li {
+  margin: 8px 0;
+  color: #CBD5E1;
+}
+
+#skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+#skills h2 {
+  grid-column: 1 / -1;
+}
+
+#skills div {
+  background: #1E293B;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+#skills div:hover {
+  transform: translateY(-10px);
+  border: 1px solid #38BDF8;
+}
+
+#experience ul {
+  max-width: 600px;
+  margin: auto;
+}
+
+#experience li {
+  margin: 10px 0;
+  color: #CBD5E1;
+}
+
+#contact form {
+  max-width: 500px;
+  margin: 30px auto;
+}
+
+#contact input,
+#contact textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #1E293B;
+  color: #E5E7EB;
+}
+
+#contact textarea {
+  resize: none;
+  height: 120px;
+}
+
+#contact button {
+  background: #38BDF8;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#contact button:hover {
+  background: #0ea5e9;
+}
+
+footer {
+  background: #020617;
+  text-align: center;
+  padding: 25px;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #38BDF8;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 8%;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+  }
+}
+#contact li{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+} 
