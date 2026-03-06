@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Interactive Quiz</h1>
+    <p class="intro">
+      Test your knowledge with this short quiz. Choose the correct answer and click Next.
+    </p>
+
+    <div id="quiz-box">
+      <h2 id="question">Question Text</h2>
+
+      <div class="options">
+        <label><input type="radio" name="option" value="0"> <span id="opt0"></span></label>
+        <label><input type="radio" name="option" value="1"> <span id="opt1"></span></label>
+        <label><input type="radio" name="option" value="2"> <span id="opt2"></span></label>
+        <label><input type="radio" name="option" value="3"> <span id="opt3"></span></label>
+      </div>
+
+      <button type="submit" id="nextBtn">Next</button>
+    </div>
+
+    <div id="result-box">
+      <h2 id="score">hello</h2>
+      <p id="message"></p>
+      <button type="submit" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+
+  </div>
+
+<script>
+  const quizData = [
+  {
+    question: "Which device is used to input text into a computer?",
+    options: ["Monitor", "Keyboard", "Speaker", "Printer"],
+    answer: 1
+  },
+  {
+    question: "What does CPU stand for?",
+    options: ["Central Process Unit", "Central Processing Unit", "Computer Personal Unit", "Control Program Unit"],
+    answer: 1
+  },
+  {
+    question: "Which of these is an operating system?",
+    options: ["Google Chrome", "Windows", "Oracle", "Python"],
+    answer: 1
+  },
+  {
+    question: "Which language is mainly used for web page structure?",
+    options: ["CSS", "Python", "HTML", "C++"],
+    answer: 2
+  },
+  {
+    question: "What is the brain of the computer called?",
+    options: ["RAM", "Hard Disk", "CPU", "Monitor"],
+    answer: 2
+  },
+  {
+    question: "Which storage is temporary?",
+    options: ["ROM", "Hard Disk", "SSD", "RAM"],
+    answer: 3
+  },
+  {
+    question: "Which symbol is used to end a JavaScript statement?",
+    options: [":", ";", "#", "&"],
+    answer: 1
+  },
+  {
+    question: "What does URL stand for?",
+    options: ["Universal Resource Locator", "Uniform Resource Locator", "Unified Resource Link", "Universal Reference Link"],
+    answer: 1
+  },
+  {
+    question: "Which device is used to print documents?",
+    options: ["Scanner", "Monitor", "Printer", "Keyboard"],
+    answer: 2
+  },
+  {
+    question: "Which of the following is a programming language?",
+    options: ["HTML", "CSS", "JavaScript", "Photoshop"],
+    answer: 2
+  },
+  {
+    question: "Which key is used to refresh a webpage?",
+    options: ["F2", "F5", "F7", "F12"],
+    answer: 1
+  },
+  {
+    question: "What does Wi-Fi allow you to do?",
+    options: ["Print documents", "Connect to internet wirelessly", "Scan images", "Store files"],
+    answer: 1
+  }
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionEl = document.getElementById("question");
+const optionsEls = document.querySelectorAll("input[name='option']");
+const nextBtn = document.getElementById("nextBtn");
+const resultBox = document.getElementById("result-box");
+const quizBox = document.getElementById("quiz-box");
+const scoreEl = document.getElementById("score");
+const messageEl = document.getElementById("message");
+
+loadQuestion();
+
+function loadQuestion() {
+  const q = quizData[currentQuestion];
+  questionEl.textContent = q.question;
+  document.getElementById("opt0").textContent = q.options[0];
+  document.getElementById("opt1").textContent = q.options[1];
+  document.getElementById("opt2").textContent = q.options[2];
+  document.getElementById("opt3").textContent = q.options[3];
+
+  optionsEls.forEach(option => option.checked = false);
+}
+
+nextBtn.addEventListener("click", () => {
+  let selected = null;
+
+  optionsEls.forEach(option => {
+    if (option.checked) {
+      selected = parseInt(option.value);
+    }
+  });
+
+  if (selected === null) {
+    alert("Please select an option");
+    return;
+  }
+
+  if (selected === quizData[currentQuestion].answer) {
+    score++;
+  }
+
+  currentQuestion++;
+
+  if (currentQuestion < quizData.length) {
+    loadQuestion();
+  } else {
+    showResult();
+  }
+});
+
+function showResult() {
+  quizBox.style.display = "none";
+  resultBox.style.display = "block";
+  scoreEl.textContent = `Your Score: ${score}/${quizData.length}`;
+
+  if (score === quizData.length) {
+    messageEl.textContent = "Excellent!";
+  } else if (score >= quizData.length / 2) {
+    messageEl.textContent = "Good Job!";
+  } else {
+    messageEl.textContent = "Try Again!";
+  }
+}
+
+function restartQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  resultBox.style.display = "none";
+  quizBox.style.display = "block";
+  loadQuestion();
+}
+</script>
+</body>
+</html>
