@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="Stylesheet" href="port Style.css">
+  </head>
+  <body>
+    <header>
+        <h1>Hi, I'm Ankit 👋</h1>
+        <h2>B.Tech CSE Student | Python Developer | Cyber Security Enthusiast</h2>
+
+        <p>I build projects using Python, Web, and AI. Currently working on Lost &amp; Found platform and Voice Assistant "Liza".</p>
+
+        <button type="submit" id="resumeBtn">Download Resume</button>
+        <button type="submit" id="contactBtn">Contact Me</button>
+        <button type="submit" id="toggleSkillsBtn">Show / Hide Skills</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="about">
+        <h2>About Me</h2>
+
+        <p>
+            I am a first-year B.Tech CSE student passionate about programming,
+            cyber security, and AI. I enjoy solving problems on LeetCode and
+            building real-world projects.
+        </p>
+
+        <ul>
+            <li>College: B.Tech CSE (Core)</li>
+            <li>Languages: Python, C++, Java (basic)</li>
+            <li>Goal: Software Engineer / Cyber Security Specialist</li>
+        </ul>
+    </section>
+    <section id="skills">
+        <h2>Skills</h2>
+
+        <div>
+            <h3>Programming</h3>
+            <p>Python, C++, Java</p>
+        </div>
+
+        <div>
+            <h3>Web</h3>
+            <p>HTML, CSS, JavaScript, React (learning)</p>
+        </div>
+
+        <div>
+            <h3>Tools</h3>
+            <p>Git, GitHub, Firebase, Termux</p>
+        </div>
+
+        <div>
+            <h3>Domains</h3>
+            <p>Cyber Security, AI/ML, App Development</p>
+        </div>
+    </section>
+    <section id="experience">
+        <h2>Experience &amp; Achievements</h2>
+
+        <ul>
+            <li> Participated in Hackathon with Voice Assistant Project</li>
+            <li> Solved 100+ LeetCode problems</li>
+            <li> 3-star Python on HackerRank</li>
+            <li> Preparing for Google Internship</li>
+        </ul>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <p>Email: ankitbalhara@example.com</p>
+        <p>LinkedIn: linkedin.com/in/ankitbalhara</p>
+        <p>GitHub: github.com/ankitbalhara</p>
+
+        <form>
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Your Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2026 Ankit Balhara. All rights reserved.</p>
+
+        <div>
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">LeetCode</a>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("resumeBtn").addEventListener("click", function () {
+            alert("Thank you for visiting my portfolio!");
+        });
+
+        document.getElementById("contactBtn").addEventListener("click", function () {
+            document.getElementById("contact").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+
+        document.getElementById("toggleSkillsBtn").addEventListener("click", function () {
+            let skillsSection = document.getElementById("skills");
+
+            if (skillsSection.style.display === "none") {
+                skillsSection.style.display = "grid";
+            } else {
+                skillsSection.style.display = "none";
+            }
+        });
+    </script>
+  </body>
+</html>
