@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic To-Do List</title>
+    <link rel="stylesheet" href="todo.css ">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>My Tasks</h1>
+            <p>Stay organized and check off your goals.</p>
+        </header>
+
+        <div class="input-section">
+            <input type="text" id="todo-input" placeholder="What needs to be done?">
+            <button id="add-btn" type="submit">Add Task</button>
+        </div>
+
+        <div class="prior">
+            <select id="priority">
+                <option>High</option>
+                <option>Medium</option>
+                <option>Low</option>
+            </select>
+        </div>
+
+        <div class="stats">
+            <span id="task-count">Pending: 0 | Completed: 0 | Total Task: 0</span>
+        </div>
+
+        <ul id="todo-list"></ul>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f172a;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.container {
+    background: #1e293b;
+    width: 400px;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    color:#f8fafc;
+}
+
+header p {
+    font-size: 0.9rem;
+    color: #f8fafc;
+    margin-bottom: 1.5rem;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+.prior #priority {
+    padding: 10px;
+    border-radius: 6px;
+    width: 100%;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+button#add-btn {
+    padding: 10px 15px;
+    background-color: #5c67f2;
+    color: #f8fafc;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #f8fafc;
+    margin-bottom: 1rem;
+}
+
+.clear-btn {
+    background: none;
+    border: 1px solid #f43f5e;
+    color: #f43f5e;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.clear-btn:hover {
+    background-color: #f43f5e;
+    color: white;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.task-text {
+    flex: 1;
+    color: #1e293b;
+    font-weight: 500;
+}
+
+.completed .task-text {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.pri {
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.priority-high { background-color: #ef4444; }
+.priority-medium { background-color: #f59e0b; }
+.priority-low { background-color: #10b981; }
+
+.edit-btn, .delete-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.edit-btn { color: #ffc107; }
+.delete-btn { color: #f43f5e; }
