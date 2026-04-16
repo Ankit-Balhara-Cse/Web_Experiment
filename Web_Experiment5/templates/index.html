@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Home — Simple Blog{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+  <h1>The Journal</h1>
+  <p>{{ posts | length }} post{{ 's' if posts | length != 1 else '' }} published</p>
+</div>
+
+{% if posts %}
+  {% for post in posts %}
+    <article class="post-card">
+
+      <span class="post-number">{{ '%02d' % loop.index }}</span>
+
+      <h2 class="post-title">{{ post.title }}</h2>
+
+      <p class="post-content">{{ post.content }}</p>
+
+      <div class="post-actions">
+
+        <a class="btn btn-edit" href="{{ url_for('edit', post_id=post.id) }}">
+          ✎ Edit
+        </a>
+
+        <form action="{{ url_for('delete', post_id=post.id) }}" method="POST"
+              onsubmit="return confirm('Delete this post?');" style="display:inline;">
+          <button class="btn btn-delete" type="submit">✕ Delete</button>
+        </form>
+
+      </div>
+    </article>
+  {% endfor %}
+
+{% else %}
+  <div class="empty-state">
+    <div class="empty-icon">📝</div>
+    <h2>No posts yet</h2>
+    <p>Get started by creating your first blog post.</p>
+    <br />
+    <a class="btn btn-primary" href="{{ url_for('create') }}">Create First Post</a>
+  </div>
+{% endif %}
+
+{% endblock %}
