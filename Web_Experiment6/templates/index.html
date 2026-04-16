@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}All Contacts — Contact Manager{% endblock %}
+
+{% block content %}
+
+  <!-- Page heading -->
+  <div class="page-header">
+    <h1>📋 Contact Directory</h1>
+    <p>Manage all your saved contacts in one place.</p>
+  </div>
+
+  <!-- ── Task 7: Search form ── -->
+  <form class="search-bar" action="{{ url_for('index') }}" method="GET">
+    <input
+      type="text"
+      name="q"
+      placeholder="Search by name or phone number…"
+      value="{{ query }}"
+      autofocus
+    />
+    <button class="btn btn-search" type="submit">🔍 Search</button>
+    {% if query %}
+      <a class="btn btn-clear" href="{{ url_for('index') }}">✕ Clear</a>
+    {% endif %}
+  </form>
+
+  <!-- Stats row -->
+  <div class="stats-bar">
+    <span>
+      {% if query %}
+        Found <strong>{{ contacts | length }}</strong> result(s) for "<strong>{{ query }}</strong>"
+      {% else %}
+        <strong>{{ contacts | length }}</strong> contact(s) stored
+      {% endif %}
+    </span>
+    <a class="btn btn-primary" href="{{ url_for('add_contact') }}">＋ Add Contact</a>
+  </div>
+
+  <!-- ── Contact table ── -->
+  {% if contacts %}
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th style="text-align:right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in contacts %}
+            <tr>
+              <!-- Row number -->
+              <td style="color:var(--muted); font-size:0.8rem;">{{ loop.index }}</td>
+
+              <!-- Name with avatar initials -->
+              <td>
+                <div class="contact-name">
+                  <div class="avatar">
+                    {{ contact.name[0] | upper }}
+                  </div>
+                  {{ contact.name }}
+                </div>
+              </td>
+
+              <!-- Phone -->
+              <td class="contact-phone">📞 {{ contact.phone }}</td>
+
+              <!-- Email -->
+              <td class="contact-email">✉️ {{ contact.email }}</td>
+
+              <!-- Edit / Delete actions -->
+              <td>
+                <div class="action-cell">
+                  <!-- Edit: GET link -->
+                  <a class="btn btn-edit"
+                     href="{{ url_for('edit_contact', contact_id=contact.id) }}">
+                    ✎ Edit
+                  </a>
+
+                  <!-- Delete: POST form (prevents accidental deletion) -->
+                  <form action="{{ url_for('delete_contact', contact_id=contact.id) }}"
+                        method="POST"
+                        onsubmit="return confirm('Delete {{ contact.name }}?');"
+                        style="display:inline;">
+                    <button class="btn btn-danger" type="submit">✕ Delete</button>
+                  </form>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  {% else %}
+    <!-- Empty / no-results state -->
+    <div class="empty-state">
+      <div class="empty-icon">{% if query %}🔍{% else %}📭{% endif %}</div>
+      {% if query %}
+        <h2>No contacts found</h2>
+        <p>No contacts match "<strong>{{ query }}</strong>". Try a different search.</p>
+        <br />
+        <a class="btn btn-secondary" href="{{ url_for('index') }}">Clear Search</a>
+      {% else %}
+        <h2>No contacts yet</h2>
+        <p>Your directory is empty. Add your first contact to get started.</p>
+        <br />
+        <a class="btn btn-primary" href="{{ url_for('add_contact') }}">＋ Add Contact</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+{% endblock %}

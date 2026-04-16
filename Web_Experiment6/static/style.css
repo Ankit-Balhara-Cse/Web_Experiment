@@ -1,0 +1,24 @@
+/*
+ * static/style.css
+ * Supplementary styles for Contact Management System.
+ * Core styles live in base.html.
+ *
+ * To link: add in base.html <head>:
+ *   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+ */
+
+/* Page-load animation */
+main { animation: fadeIn 0.35s ease both; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Table row hover transition */
+tbody tr { transition: background 0.12s; }
+
+/* Responsive: hide email column on small screens */
+@media (max-width: 480px) {
+  th:nth-child(4), td:nth-child(4) { display: none; }
+}
