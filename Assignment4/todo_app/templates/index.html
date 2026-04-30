@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Input Panel -->
+<section class="input-panel">
+    <h2>Add a New Task</h2>
+
+    <input type="text" id="task-title" placeholder="Task title (required)" />
+    <p class="error-msg" id="title-error">⚠️ Title cannot be empty!</p>
+
+    <textarea id="task-desc" placeholder="Description (optional)" rows="2"></textarea>
+
+    <select id="task-priority">
+        <option value="low">🟢 Low Priority</option>
+        <option value="medium" selected>🟠 Medium Priority</option>
+        <option value="high">🔴 High Priority</option>
+    </select>
+
+    <button id="add-btn" onclick="addTask()">+ Add Task</button>
+</section>
+
+<!-- Filter Bar -->
+<section class="filter-bar">
+    <button class="filter-btn active" onclick="filterTasks('all')">All Tasks</button>
+    <button class="filter-btn" onclick="filterTasks('active')">Active</button>
+    <button class="filter-btn" onclick="filterTasks('completed')">Completed</button>
+</section>
+
+<!-- Task Counter -->
+<section class="counter-bar">
+    <span class="counter-badge total">Total: <span id="count-total">0</span></span>
+    <span class="counter-badge active">Active: <span id="count-active">0</span></span>
+    <span class="counter-badge done">Done: <span id="count-done">0</span></span>
+</section>
+
+<!-- Task List -->
+<section>
+    <div id="task-list">
+        <!-- Tasks are injected here by JavaScript -->
+    </div>
+</section>
+
+{% endblock %}
