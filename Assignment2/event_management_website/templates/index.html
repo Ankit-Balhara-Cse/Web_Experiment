@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}EventHub - Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to EventHub</h1>
+        <p>Discover, register, and manage events all in one place. From tech fests to cultural nights — find your next experience.</p>
+        <div class="hero-buttons">
+            <a href="{{ url_for('events_page') }}" class="btn btn-primary">Browse Events</a>
+            <a href="{{ url_for('register') }}" class="btn btn-outline">Register Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <h2>Why EventHub?</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <span class="icon">🔍</span>
+            <h3>Easy Discovery</h3>
+            <p>Browse and search events by name or category instantly.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📋</span>
+            <h3>Quick Registration</h3>
+            <p>Register for any event in just a few clicks.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🛠️</span>
+            <h3>Admin Panel</h3>
+            <p>Admins can add, edit, and delete events easily.</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

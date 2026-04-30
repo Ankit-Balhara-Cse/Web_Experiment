@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <h1>Upcoming Events</h1>
+    <p>Browse all events and register for the ones you love.</p>
+</section>
+
+<section class="events-section">
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search events by name..." oninput="searchEvents()">
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterEvents('All', this)">All</button>
+            <button class="filter-btn" onclick="filterEvents('Technology', this)">Technology</button>
+            <button class="filter-btn" onclick="filterEvents('Music', this)">Music</button>
+            <button class="filter-btn" onclick="filterEvents('Cultural', this)">Cultural</button>
+        </div>
+    </div>
+
+    <div class="events-grid" id="eventsGrid">
+        {% for event in events %}
+        <article class="event-card" data-category="{{ event.category }}" data-name="{{ event.name | lower }}">
+            <figure>
+                <img src="{{ event.image }}" alt="{{ event.name }}">
+            </figure>
+            <div class="card-body">
+                <span class="category-tag">{{ event.category }}</span>
+                <h3>{{ event.name }}</h3>
+                <p class="event-info">📅 {{ event.date }} &nbsp; ⏰ {{ event.time }}</p>
+                <p class="event-info">📍 {{ event.venue }}</p>
+                <p class="description">{{ event.description }}</p>
+                <p class="rsvp-count">👥 {{ event.rsvp }} people registered</p>
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Register</a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
